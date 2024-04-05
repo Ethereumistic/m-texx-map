@@ -268,34 +268,34 @@ export default function LokaciiCon({  }) {
             <div className='flex space-x-1 justify-center my-4'>
                 <div className='flex '>
                 <div className='flex-col flex'>
-  <button onClick={toggleMarkers1} className={`font-osw text-xl text-center bg-lblue hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers1 ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
-    <h4>🌊</h4>
+  <button onClick={toggleMarkers1} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers1 ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
+    <h4>W</h4>
   </button>
-  <button onClick={toggleBlueSidebar} className={`font-osw text-xl text-center bg-lblue hover:scale-110 transition duration-300 p-2 rounded-lg ${showBlueSidebar ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleBlueSidebar} className={`font-osw text-xl text-centerhover:scale-110 transition duration-300 p-2 rounded-lg ${showBlueSidebar ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
   </button>
 </div>
 
 <div className='flex-col flex'>
-  <button onClick={toggleMarkers2} className={`font-osw text-xl text-center bg-lyellow hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers2 ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
-    <h4>❌</h4>
+  <button onClick={toggleMarkers2} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers2 ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
+    <h4>X</h4>
   </button>
-  <button onClick={toggleRedSidebar} className={`font-osw text-xl text-center bg-lyellow hover:scale-110 transition duration-300 p-2 rounded-lg ${showRedSidebar ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleRedSidebar} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showRedSidebar ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
   </button>
 </div>
 
 <div className='flex-col flex'>
-  <button onClick={toggleMarkers3} className={`font-osw text-xl text-center bg-lgreen hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers3 ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
-    <h4>🟢</h4>
+  <button onClick={toggleMarkers3} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers3 ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
+    <h4>G</h4>
   </button>
-  <button onClick={toggleGreenSidebar} className={`font-osw text-xl text-center bg-lgreen hover:scale-110 transition duration-300 p-2 rounded-lg ${showGreenSidebar ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleGreenSidebar} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showGreenSidebar ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
   </button>
 </div>
 
 <div className='flex-col flex'>
-  <button onClick={toggleMarkers4} className={`font-osw text-xl text-center bg-lred hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers4 ? 'text-dgreen bg-lred' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleMarkers4} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers4 ? 'text-dgreen bg-lred' : 'text-gray-400 bg-gray-300'}`}>
     <h4>💢</h4>
   </button>
 </div>
