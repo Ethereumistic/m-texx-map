@@ -14,7 +14,11 @@ module.exports = {
         lgreen: " #88d498 ", 
         dgreen: " #172e08 ",
         lred: " #DB5C84 ",
-        dred: " #4C0414 "
+        dred: " #4C0414 ",
+        lyellow: " #FFDE59 ",
+        dyellow: " #60562E ",
+        lblue: " #A8E0FF ",
+        dblue: " #07476B ",
       },
 
       fontFamily: {
