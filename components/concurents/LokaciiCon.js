@@ -23,7 +23,7 @@ const customIcon = new Icon({
   })
 
   const customIconConB = new Icon({
-    iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dbpin.png",
+    iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/lbpin.png",
     iconSize: [34, 34]
   })
 
@@ -32,6 +32,31 @@ const customIcon = new Icon({
     iconSize: [34, 34]
   })
 
+
+const iconWave = new Icon({
+    iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/wave.png",
+    iconSize: [34, 34]
+  })
+
+  const iconX = new Icon({
+    iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/x.png",
+    iconSize: [34, 34]
+  })
+
+  const iconG = new Icon({
+    iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/green.png",
+    iconSize: [34, 34]
+  })
+
+  const customIcons = [
+    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dpin.png", iconSize: [34, 34] }),
+    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/lrpin.png", iconSize: [34, 34] }),
+    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/pin.png", iconSize: [34, 34] }),
+    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dpin.pngg", iconSize: [34, 34] }),
+    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dpin.png", iconSize: [34, 34] }),
+    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dpin.png", iconSize: [34, 34] })
+  ];
+  
   function LocationMap({ selectedLocation }) {
     const map = useMap();
       if (selectedLocation) {
@@ -83,6 +108,8 @@ export default function LokaciiCon({  }) {
     const [selectedCityRed, setSelectedCityRed] = useState(null);
     const [selectedLocationRed, setSelectedLocationRed] = useState(null);
 
+
+    
     const handleCityClick = (cityName) => {
       if (selectedCity === cityName) {
         setSelectedCity(null); // Close the menu if the same city is clicked again
@@ -178,11 +205,13 @@ export default function LokaciiCon({  }) {
       const toggleColor = () => {
         setColor((prev) => !prev);
       };
+
+      
     
 
 
     return (
-        <div className='overflow-x-hidden overflow-y-hidden'>
+        <div className='overflow-x-hidden overflow-y-hidden '>
 
                     
         
@@ -194,7 +223,7 @@ export default function LokaciiCon({  }) {
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <MarkerClusterGroup>
           {showMarkers1 && markerb.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={customIconConB}>
+            <Marker key={index} position={marker.geocode} icon={iconWave}>
               <Popup>
                 <div>
                   <p>{marker.city}</p>
@@ -204,7 +233,7 @@ export default function LokaciiCon({  }) {
             </Marker>
           ))}
           {showMarkers2 && markery.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={customIconConY}>
+            <Marker key={index} position={marker.geocode} icon={iconX}>
               <Popup>
                 <div>
                   <p>{marker.city}</p>
@@ -214,7 +243,7 @@ export default function LokaciiCon({  }) {
             </Marker>
           ))}
           {showMarkers3 && markers.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={customIcon}>
+            <Marker key={index} position={marker.geocode} icon={iconG}>
               <Popup>
                 <div>
                   <p>{marker.city}</p>
@@ -232,7 +261,7 @@ export default function LokaciiCon({  }) {
         <MapContainer center={[42.7339, 25.4858]} zoom={8} style={{ width: '100%', height: '800px' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {showMarkers1 && markerb.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={customIconConB}>
+            <Marker key={index} position={marker.geocode} icon={iconWave}>
               <Popup>
                 <div>
                   <p>{marker.city}</p>
@@ -242,7 +271,7 @@ export default function LokaciiCon({  }) {
             </Marker>
           ))}
           {showMarkers2 && markery.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={customIconConY}>
+            <Marker key={index} position={marker.geocode} icon={iconX}>
               <Popup>
                 <div>
                   <p>{marker.city}</p>
@@ -252,7 +281,7 @@ export default function LokaciiCon({  }) {
             </Marker>
           ))}
           {showMarkers3 && markers.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={customIcon}>
+            <Marker key={index} position={marker.geocode} icon={iconG}>
               <Popup>
                 <div>
                   <p>{marker.city}</p>
@@ -264,12 +293,12 @@ export default function LokaciiCon({  }) {
       )}
             </div>
 
-            <div className='sm:translate-y-2 md:translate-y-2 lg:-translate-y-[800px] xl:-translate-y-[800px] 2xl:-translate-y-[800px] sm:relative md:relative lg:fixed xl:fixed 2xl:fixed '>
+            <div className='z-[1000] sm:translate-y-2 md:translate-y-2 lg:-translate-y-[800px] xl:-translate-y-[800px] 2xl:-translate-y-[920px] sm:relative md:relative lg:fixed xl:fixed 2xl:fixed '>
             <div className='flex space-x-1 justify-center my-4'>
                 <div className='flex '>
                 <div className='flex-col flex'>
   <button onClick={toggleMarkers1} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers1 ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
-    <h4>W</h4>
+    <h4>🌊</h4>
   </button>
   <button onClick={toggleBlueSidebar} className={`font-osw text-xl text-centerhover:scale-110 transition duration-300 p-2 rounded-lg ${showBlueSidebar ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
@@ -278,7 +307,7 @@ export default function LokaciiCon({  }) {
 
 <div className='flex-col flex'>
   <button onClick={toggleMarkers2} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers2 ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
-    <h4>X</h4>
+    <h4>❌</h4>
   </button>
   <button onClick={toggleRedSidebar} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showRedSidebar ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
@@ -287,7 +316,7 @@ export default function LokaciiCon({  }) {
 
 <div className='flex-col flex'>
   <button onClick={toggleMarkers3} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers3 ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
-    <h4>G</h4>
+    <h4>🟢</h4>
   </button>
   <button onClick={toggleGreenSidebar} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showGreenSidebar ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
@@ -298,6 +327,9 @@ export default function LokaciiCon({  }) {
   <button onClick={toggleMarkers4} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers4 ? 'text-dgreen bg-lred' : 'text-gray-400 bg-gray-300'}`}>
     <h4>💢</h4>
   </button>
+  {/* <button  className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers ? 'text-dgreen bg-lred' : 'text-gray-400 bg-gray-300'}`}>
+    <h4><IoIosArrowDropdownCircle size={24}/></h4>
+  </button> */}
 </div>
 
 
@@ -467,6 +499,7 @@ export default function LokaciiCon({  }) {
 {showBlueSidebar && <MarkerGridBlue markers={markerb} />}
 {showRedSidebar && <MarkerGridRed markers={markery} />}
     </div>
+    <div className='text-4xl'>asd</div>
     <Backlink page="locations" />
         </div>
     )
