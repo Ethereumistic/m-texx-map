@@ -14,6 +14,8 @@ import Link from 'next/link';
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import MarkerGridBlue from './blue/MarkerGridBlue';
 import MarkerGridRed from './red/MarkerGridRed';
+import UpToSearch from '../upToSearch';
+import DirectSearch from '../DirectSearch';
 
 const markerb = require('@/components/concurents/blue/blue');
 const markery = require('@/components/concurents/red/red')
@@ -200,6 +202,7 @@ const iconX = new Icon({
 const iconG = new Icon({
   iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/green1.png",
   iconSize: iconSize
+  
 })
     
     const toggleMarkers1 = () => {
@@ -544,8 +547,10 @@ const iconG = new Icon({
 {showBlueSidebar && <MarkerGridBlue markers={markerb} />}
 {showRedSidebar && <MarkerGridRed markers={markery} />}
     </div>
-    <div className='text-4xl'>asd</div>
+    <div className='text-4xl '></div>
+    {/* <DirectSearch page="direct" /> */}
     <Backlink page="locations" />
+    <UpToSearch page="search"/>
         </div>
     )
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BiCurrentLocation } from 'react-icons/bi';
 import { TbCurrentLocation } from 'react-icons/tb';
 import { FaLocationArrow } from 'react-icons/fa';
-import CitySearchBox from './CitySearchBox';
+import CitySearchBoxCon from './CitySearchBoxCon';
  
 
 
@@ -67,7 +67,7 @@ const MarkerGrid = ({ markers }) => {
         
       </div>
     <div className="border-2 rounded-lg border-dgreen dark:border-lgreen p-4 -mx-16 sm:-mx-16 md:-mx-16 lg:-mx-0 xl:-mx-0 z-20 -translate-y-[800px] -translate-x-60 sm:-translate-x-48 md:-translate-x-36 lg:-translate-x-0 xl:-translate-x-0">
-    <CitySearchBox cities={Object.keys(groupedMarkers)} onCitySearch={handleCitySearch} />
+    <CitySearchBoxCon cities={Object.keys(groupedMarkers)} onCitySearch={handleCitySearch} />
     {Object.keys(groupedMarkers).map((city, index) => (
   <div key={city} className="border rounded-lg border-dgreen dark:border-lgreen p-8 mb-4 " ref={(el) => (cityRefs[city] = el)}>
           <h2 className="text-4xl text-center mt-2 font-russo mb-2 dark:text-gray-200 ">{city}</h2>

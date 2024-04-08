@@ -59,6 +59,9 @@ dependencies:
   leaflet:
     specifier: ^1.9.4
     version: 1.9.4
+  leaflet-fullscreen:
+    specifier: ^1.0.2
+    version: 1.0.2
   local-storage:
     specifier: ^2.0.0
     version: 2.0.0
@@ -5399,6 +5402,10 @@ packages:
     engines: {node: '>= 0.6.3'}
     dependencies:
       readable-stream: 2.3.8
+    dev: false
+
+  /leaflet-fullscreen@1.0.2:
+    resolution: {integrity: sha512-1Yxm8RZg6KlKX25+hbP2H/wnOAphH7hFcvuADJFb4QZTN7uOSN9Hsci5EZpow8vtNej9OGzu59Jxmn+0qKOO9Q==}
     dev: false
 
   /leaflet.markercluster@1.5.3(leaflet@1.9.4):
