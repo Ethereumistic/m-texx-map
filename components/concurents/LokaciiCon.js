@@ -2,6 +2,8 @@
 import { React, useRef, useEffect, useState } from 'react';
 import { Icon } from 'leaflet';
 import "leaflet/dist/leaflet.css";
+import "leaflet-fullscreen/dist/Leaflet.fullscreen";
+import "leaflet-fullscreen/dist/leaflet.fullscreen.css"
 import { FaAngleDown, FaAngleRight } from 'react-icons/fa';
 import MarkerGrid from '../MarkerGrid';
 
@@ -33,31 +35,35 @@ const customIcon = new Icon({
   })
 
 
-const iconWave = new Icon({
-    iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/wave.png",
-    iconSize: [34, 34]
-  })
+// const iconWave = new Icon({
+//     iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/wave1.png",
+//     iconSize: [34, 34]
+//   })
 
-  const iconX = new Icon({
-    iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/x.png",
-    iconSize: [34, 34]
-  })
+//   const iconX = new Icon({
+//     iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/x1.png",
+//     iconSize: [34, 34]
+//   })
 
-  const iconG = new Icon({
-    iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/green.png",
-    iconSize: [34, 34]
-  })
+//   const iconG = new Icon({
+//     iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/green1.png",
+//     iconSize: [34, 34]
+//   })
 
-  const customIcons = [
-    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dpin.png", iconSize: [34, 34] }),
-    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/lrpin.png", iconSize: [34, 34] }),
-    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/pin.png", iconSize: [34, 34] }),
-    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dpin.pngg", iconSize: [34, 34] }),
-    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dpin.png", iconSize: [34, 34] }),
-    new Icon({ iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/dpin.png", iconSize: [34, 34] })
-  ];
+function Fullscreen() {
+  const mapRef = useRef();
+
+  useEffect(() => {
+    const {current = {} } = mapRef;
+    const { leafletElement: map } = current;
+  })
+}
+
+
   
   function LocationMap({ selectedLocation }) {
+
+
     const map = useMap();
       if (selectedLocation) {
         const marker = markers.find((marker) => marker.popUp === selectedLocation);
@@ -172,11 +178,29 @@ export default function LokaciiCon({  }) {
     const [showMarkers2, setShowMarkers2] = useState(true);
     const [showMarkers3, setShowMarkers3] = useState(true);
     const [showMarkers4, setShowMarkers4] = useState(true);
+    const [showMarkers5, setShowMarkers5] = useState(true);
     const [showRedSidebar, setShowRedSidebar] = useState(true);
     const [showGreenSidebar, setShowGreenSidebar] = useState(true);
     const [showBlueSidebar, setShowBlueSidebar] = useState(true);
-    const [color, setColor] = useState(true);
+    const [iconSize, setIconSize] = useState([34, 34]); // Initial icon size
+    const [showGray, setShowGray] = useState(true);
 
+    
+    
+const iconWave = new Icon({
+  iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/wave1.png",
+  iconSize: iconSize
+})
+
+const iconX = new Icon({
+  iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/x1.png",
+  iconSize: iconSize
+})
+
+const iconG = new Icon({
+  iconUrl: "https://cdn.jsdelivr.net/gh/Ethereumistic/obshtini/locations/green1.png",
+  iconSize: iconSize
+})
     
     const toggleMarkers1 = () => {
       setShowMarkers1(prevState => !prevState);
@@ -190,7 +214,9 @@ export default function LokaciiCon({  }) {
     const toggleMarkers4 = () => {
         setShowMarkers4(prevState => !prevState);
       };
-
+      const toggleMarkers5 = () => {
+        setShowMarkers5(prevState => !prevState);
+      };
 
       const toggleRedSidebar = () => {
         setShowRedSidebar((prev) => !prev);
@@ -201,13 +227,15 @@ export default function LokaciiCon({  }) {
       const toggleBlueSidebar = () => {
         setShowBlueSidebar((prev) => !prev);
       };
-
-      const toggleColor = () => {
-        setColor((prev) => !prev);
+      
+      const toggleIconSize = () => {
+        // Toggle the icon size based on the current state
+        setIconSize(prevSize => (prevSize[0] === 34 && prevSize[1] === 34) ? [21, 21] : [34, 34]);
       };
 
-      
-    
+      const toggleIconGray = () => {
+        setShowGray(prevState => !prevState);
+      };
 
 
     return (
@@ -219,46 +247,46 @@ export default function LokaciiCon({  }) {
 
     {/* THE MAP CONDITIONAL RENDER BASED ON MARKERCLUSTERTOGGLE BUTTON */}
     {showMarkers4 ? (
-    <MapContainer center={[42.7339, 25.4858]} zoom={8} style={{ width: '100%', height: '800px' }}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <MarkerClusterGroup>
-          {showMarkers1 && markerb.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={iconWave}>
-              <Popup>
-                <div>
-                  <p>{marker.city}</p>
-                  <p>{marker.popUp}</p>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
-          {showMarkers2 && markery.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={iconX}>
-              <Popup>
-                <div>
-                  <p>{marker.city}</p>
-                  <p>{marker.popUp}</p>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
-          {showMarkers3 && markers.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={iconG}>
-              <Popup>
-                <div>
-                  <p>{marker.city}</p>
-                  <p>{marker.popUp}</p>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
-        </MarkerClusterGroup>
-        <LocationMap selectedLocation={selectedLocation} />
-        <LocationMapBlue selectedLocationBlue={selectedLocationBlue} />
-        <LocationMapRed selectedLocationRed={selectedLocationRed} />
-      </MapContainer>
+  <MapContainer center={[42.7339, 25.4858]} FullscreenControl={true} zoom={8} style={{ width: '100%', height: '800px' }}>
+    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+    <MarkerClusterGroup>
+      {showMarkers1 && markerb.map((marker, index) => (
+        <Marker key={index} position={marker.geocode} icon={iconWave}>
+          <Popup>
+            <div>
+              <p>{marker.city}</p>
+              <p>{marker.popUp}</p>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+      {showMarkers2 && markery.map((marker, index) => (
+        <Marker key={index} position={marker.geocode} icon={iconX}>
+          <Popup>
+            <div>
+              <p>{marker.city}</p>
+              <p>{marker.popUp}</p>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+      {showMarkers3 && markers.map((marker, index) => (
+        <Marker key={index} position={marker.geocode} icon={iconG}>
+          <Popup>
+            <div>
+              <p>{marker.city}</p>
+              <p>{marker.popUp}</p>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+    </MarkerClusterGroup>
+    <LocationMap selectedLocation={selectedLocation} />
+    <LocationMapBlue selectedLocationBlue={selectedLocationBlue} />
+    <LocationMapRed selectedLocationRed={selectedLocationRed} />
+  </MapContainer>
       ) : (
-        <MapContainer center={[42.7339, 25.4858]} zoom={8} style={{ width: '100%', height: '800px' }}>
+        <MapContainer center={[42.7339, 25.4858]} FullscreenControl={true} zoom={8} style={{ width: '100%', height: '800px' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {showMarkers1 && markerb.map((marker, index) => (
             <Marker key={index} position={marker.geocode} icon={iconWave}>
@@ -289,6 +317,8 @@ export default function LokaciiCon({  }) {
                 </div>
               </Popup>
             </Marker>
+                    
+
           ))}      </MapContainer>
       )}
             </div>
@@ -297,36 +327,51 @@ export default function LokaciiCon({  }) {
             <div className='flex space-x-1 justify-center my-4'>
                 <div className='flex '>
                 <div className='flex-col flex'>
-  <button onClick={toggleMarkers1} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers1 ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleMarkers1} className={`font-osw text-xl m-2 text-center hover:scale-110 transition duration-300 p-2 rounded-full ${showMarkers1 ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
     <h4>🌊</h4>
   </button>
-  <button onClick={toggleBlueSidebar} className={`font-osw text-xl text-centerhover:scale-110 transition duration-300 p-2 rounded-lg ${showBlueSidebar ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleBlueSidebar} className={`font-osw text-xl  mx-auto text-centerhover:scale-110 transition duration-300 p-2 rounded-lg ${showBlueSidebar ? 'text-dblue bg-lblue' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
   </button>
 </div>
 
 <div className='flex-col flex'>
-  <button onClick={toggleMarkers2} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers2 ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleMarkers2} className={`font-osw text-xl m-2 text-center hover:scale-110 transition duration-300 p-2 rounded-full ${showMarkers2 ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
     <h4>❌</h4>
   </button>
-  <button onClick={toggleRedSidebar} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showRedSidebar ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleRedSidebar} className={`font-osw text-xl  mx-auto text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showRedSidebar ? 'text-dyellow bg-lyellow' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
   </button>
 </div>
 
 <div className='flex-col flex'>
-  <button onClick={toggleMarkers3} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers3 ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleMarkers3} className={`font-osw text-xl m-2 text-center hover:scale-110 transition duration-300 p-2 rounded-full ${showMarkers3 ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
     <h4>🟢</h4>
   </button>
-  <button onClick={toggleGreenSidebar} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showGreenSidebar ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleGreenSidebar} className={`font-osw text-xl  mx-auto hover:scale-110 transition duration-300 p-2 rounded-lg ${showGreenSidebar ? 'text-dgreen bg-lgreen' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
   </button>
 </div>
 
 <div className='flex-col flex'>
-  <button onClick={toggleMarkers4} className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers4 ? 'text-dgreen bg-lred' : 'text-gray-400 bg-gray-300'}`}>
+  <button onClick={toggleMarkers4} className={`font-osw text-xl m-2 text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers4 ? 'text-dgreen bg-lred' : 'text-gray-400 bg-gray-300'}`}>
     <h4>💢</h4>
   </button>
+  <button 
+  onClick={toggleIconSize} 
+  className={`font-osw text-xl mx-auto hover:scale-110 transition duration-300 p-2 rounded-lg ${
+    (showMarkers5 && iconSize[0] === 34 && iconSize[1] === 34) 
+      ? 'text-dgreen bg-lred' // Button is active and icon size is normal
+      : 'text-gray-400 bg-gray-300' // Button is inactive or icon size is small
+  }`}
+>
+  <h4 className='text-sm py-[2px] px-[10px]'>
+    { (showMarkers5 && iconSize[0] === 34 && iconSize[1] === 34) 
+      ? 'L' // Display "L" when button is red (active)
+      : 'S' // Display "S" when button is gray (inactive)
+    }
+  </h4>
+</button>
   {/* <button  className={`font-osw text-xl text-center hover:scale-110 transition duration-300 p-2 rounded-lg ${showMarkers ? 'text-dgreen bg-lred' : 'text-gray-400 bg-gray-300'}`}>
     <h4><IoIosArrowDropdownCircle size={24}/></h4>
   </button> */}
